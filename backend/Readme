@@ -1,0 +1,17 @@
+Para começar, vamos criar um pacote para a nossa app com o comando:
+
+```
+go mod init game-sale
+```
+
+Usaremos o GIN para fazer a nossa API:
+
+```
+go get -u github.com/gin-gonic/gin
+```
+
+Para iniciar a app, usamos o comando:
+
+```
+go run cmd/api/main.go
+```
