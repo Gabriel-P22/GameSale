@@ -1,7 +1,7 @@
 package main
 
 import (
-	"game-sale-backend/internal/infrastructure/config/api"
+	"game-sale-backend/internal/interfaces/config/api"
 
 	"github.com/gin-gonic/gin"
 )

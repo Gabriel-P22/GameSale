@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"game-sale-backend/internal/infrastructure/controllers/dtos"
+	"game-sale-backend/internal/interfaces/controllers/dtos"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
