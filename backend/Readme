@@ -15,3 +15,9 @@ Para iniciar a app, usamos o comando:
 ```
 go run cmd/api/main.go
 ```
+
+Para baixar uma dependencia usarmos o:
+
+```
+go get caminho_da_dep(github.com/google/uuid)
+```

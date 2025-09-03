@@ -1,26 +1,31 @@
 package controllers
 
 import (
+	application_user "game-sale-backend/internal/application/User"
 	"game-sale-backend/internal/interfaces/controllers/dtos"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-type UserController struct {}
-
-func NewUserController() * UserController {
-	return &UserController{}
+type UserController struct {
+	userService  application_user.UserService
 }
 
-func (ctrl *UserController) Register(router *gin.Engine) {
+func NewUserController(router *gin.Engine, userService  application_user.UserService) * UserController {
+	controller := &UserController{
+		userService: userService,
+	}
+
 	requestGroup := router.Group("/user")
 	{
-		requestGroup.POST("", create)
+		requestGroup.POST("", controller.create)
 	}
+
+	return controller;
 }
 
-func create(requestContext *gin.Context) {
+func (uc *UserController) create(requestContext *gin.Context) {
 	var user dtos.UserRequest
 
 	if err := requestContext.ShouldBindJSON(&user); err != nil {
@@ -31,5 +36,8 @@ func create(requestContext *gin.Context) {
 		return;
 	}
 
-	requestContext.JSON(http.StatusCreated, user)
+	var command = application_user.CreateCommand(user);
+
+	requestContext.JSON(http.StatusCreated, uc.userService.Create(command))
 }
+
