@@ -37,7 +37,8 @@ func (uc *UserController) create(requestContext *gin.Context) {
 	}
 
 	var command = application_user.CreateCommand(user);
+	var domainUser = uc.userService.Create(command);
 
-	requestContext.JSON(http.StatusCreated, uc.userService.Create(command))
+	requestContext.JSON(http.StatusCreated, domainUser.ToUserResponse())
 }
 

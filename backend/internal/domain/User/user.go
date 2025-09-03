@@ -1,6 +1,8 @@
 package domain_user
 
 import (
+	"game-sale-backend/internal/interfaces/controllers/dtos"
+
 	"github.com/google/uuid"
 )
 
@@ -19,4 +21,12 @@ func NewUser(name, email, passowrd string) *User {
 		Email: email,
 		password: passowrd,
 	} 
+}
+
+func (u *User) ToUserResponse() *dtos.UserResponse {
+	return &dtos.UserResponse{
+		ID: u.ID,
+		Name: u.Name,
+		Email: u.Email,
+	}
 }

@@ -17,4 +17,3 @@ func CreateCommand(user dtos.UserRequest) *UserCommand {
 		Password: user.Password,
 	}
 }
-
